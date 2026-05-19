@@ -18,7 +18,7 @@ public interface IdpUserManager<T extends Client> {
      *
      * @param client the client to perform a request on.
      * @param user the user to be created.
-     * @param validate use internal validation, before sending any requests or not.
+     * @param validate use internal validation before sending any requests or not.
      * @return the created user.
      */
     User createUser(
@@ -28,11 +28,11 @@ public interface IdpUserManager<T extends Client> {
     );
 
     /**
-     * Retrieves user using the specified client and username.
+     * Retrieves a user using the specified client and username.
      *
      * @param client the client to perform a request on.
      * @param username username of the user.
-     * @param validate use internal validation, before sending any requests or not.
+     * @param validate use internal validation before sending any requests or not.
      * @return the retrieved user.
      */
     User getUser(
@@ -55,7 +55,7 @@ public interface IdpUserManager<T extends Client> {
      * @param client the client to perform a request on.
      * @param username username of the user.
      * @param newPassword the new password to set.
-     * @param validate use internal validation, before sending any requests or not.
+     * @param validate use internal validation before sending any requests or not.
      * @return the updated password.
      */
     String updateUserPassword(
@@ -70,7 +70,7 @@ public interface IdpUserManager<T extends Client> {
      *
      * @param client the client to perform a request on.
      * @param username username of the user.
-     * @param validate use internal validation, before sending any requests or not.
+     * @param validate use internal validation before sending any requests or not.
      */
     void deleteUser(
             T client,

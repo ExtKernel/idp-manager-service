@@ -1,3 +1,5 @@
 spring:
     application:
         name: idp-manager-service
+
+clientServiceTokenEndpointUrl: ${CLIENT_SERVICE_TOKEN_ENDPOINT_URL}

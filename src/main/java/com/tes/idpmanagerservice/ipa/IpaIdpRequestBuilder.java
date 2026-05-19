@@ -4,7 +4,6 @@ import com.tes.idpmanagerservice.exception.ClientHasNoFqdnOrIpAndPortException;
 import com.tes.idpmanagerservice.idp.IdpRequestBuilder;
 import com.tes.idpmanagerservice.model.IpaClient;
 import com.tes.idpmanagerservice.service.CookieClientService;
-import com.tes.idpmanagerservice.service.IpaClientService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;

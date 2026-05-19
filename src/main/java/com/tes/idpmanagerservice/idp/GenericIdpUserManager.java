@@ -5,7 +5,6 @@ import com.tes.idpmanagerservice.exception.UserAlreadyExistsOnTheClientException
 import com.tes.idpmanagerservice.exception.UserDoesNotExistOnTheClientException;
 import com.tes.idpmanagerservice.model.Client;
 import com.tes.idpmanagerservice.model.User;
-import com.tes.idpmanagerservice.service.ClientService;
 import lombok.AccessLevel;
 import lombok.Getter;
 
@@ -14,8 +13,8 @@ import java.util.List;
 
 public abstract class GenericIdpUserManager<T extends Client> implements IdpUserManager<T> {
 
-    @Getter(AccessLevel.PROTECTED)
-    private final ClientService<T> clientService;
+//    @Getter(AccessLevel.PROTECTED)
+//    private final ClientService<T> clientService;
 
     @Getter(AccessLevel.PROTECTED)
     private final IdpJsonObjectMapper jsonObjectMapper;
@@ -30,13 +29,13 @@ public abstract class GenericIdpUserManager<T extends Client> implements IdpUser
     private final UserIdpRequestSenderResultBlackListFilter<T> blackListFilter;
 
     public GenericIdpUserManager(
-            ClientService<T> clientService,
+//            ClientService<T> clientService,
             IdpJsonObjectMapper jsonObjectMapper,
             IdpUserRequestSender<T> requestSender,
             IdpModelExistenceValidator<T> modelExistenceValidator,
             UserIdpRequestSenderResultBlackListFilter<T> blackListFilter
     ) {
-        this.clientService = clientService;
+//        this.clientService = clientService;
         this.jsonObjectMapper = jsonObjectMapper;
         this.requestSender = requestSender;
         this.modelExistenceValidator = modelExistenceValidator;
@@ -67,7 +66,7 @@ public abstract class GenericIdpUserManager<T extends Client> implements IdpUser
         // if not cleared,
         // ModelExistenceValidator and other classes
         // that depend on the output of getUsers are likely to break
-        clientService.clearClientUserCache(client);
+//        clientService.clearClientUserCache(client);
 
         return createdUser;
     }
@@ -138,7 +137,7 @@ public abstract class GenericIdpUserManager<T extends Client> implements IdpUser
         // if not cleared,
         // ModelExistenceValidator and other classes
         // that depend on the output of getUsers are likely to break
-        clientService.clearClientUserCache(client);
+//        clientService.clearClientUserCache(client);
 
         return updatedPassword;
     }
@@ -167,7 +166,7 @@ public abstract class GenericIdpUserManager<T extends Client> implements IdpUser
         // if not cleared,
         // ModelExistenceValidator and other classes
         // that depend on the output of getUsers are likely to break
-        clientService.clearClientUserCache(client);
+//        clientService.clearClientUserCache(client);
     }
 
     @Override
