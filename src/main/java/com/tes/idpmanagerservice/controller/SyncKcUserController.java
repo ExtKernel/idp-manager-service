@@ -5,10 +5,9 @@ import com.tes.idpmanagerservice.model.SyncKcClient;
 import com.tes.idpmanagerservice.model.User;
 import com.tes.idpmanagerservice.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/kc/user")
 @RestController
@@ -33,6 +32,48 @@ public class SyncKcUserController {
         return this.userManager.createUser(
                 this.clientService.findById(client),
                 user,
+                true
+        );
+    }
+
+    @GetMapping("/{client}/{username}")
+    public User getUser(
+            @PathVariable String client,
+            @PathVariable String username
+    ) {
+        return this.userManager.getUser(
+                this.clientService.findById(client),
+                username,
+                true
+        );
+    }
+
+    @GetMapping("/{client}")
+    public List<User> getUsers(@PathVariable String client) {
+        return this.userManager.getUsers(this.clientService.findById(client));
+    }
+
+    @PatchMapping("/{client}/{username}")
+    public String updateUserPassword(
+            @PathVariable String client,
+            @PathVariable String username,
+            @RequestParam String newPassword
+    ) {
+        return this.userManager.updateUserPassword(
+                this.clientService.findById(client),
+                username,
+                newPassword,
+                true
+        );
+    }
+    @DeleteMapping("/{client}/{username}")
+    public void deleteUser(
+            @PathVariable String client,
+            @PathVariable String username
+    ) {
+        this.userManager.deleteUser(
+                this.clientService.findById(client),
+                username,
                 true
         );
     }

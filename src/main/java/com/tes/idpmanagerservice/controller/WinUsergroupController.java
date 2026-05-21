@@ -1,14 +1,14 @@
 package com.tes.idpmanagerservice.controller;
 
 import com.tes.idpmanagerservice.idp.IdpUsergroupManager;
+import com.tes.idpmanagerservice.model.User;
 import com.tes.idpmanagerservice.model.Usergroup;
 import com.tes.idpmanagerservice.model.WinClient;
 import com.tes.idpmanagerservice.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/ipa/user")
 @RestController
@@ -33,6 +33,75 @@ public class WinUsergroupController {
         return this.usergroupManager.createUsergroup(
                 this.clientService.findById(client),
                 usergroup,
+                true
+        );
+    }
+
+    @PatchMapping("/{client}/{usergroupName}")
+    public void addUsergroupMember(
+            @PathVariable String client,
+            @PathVariable String usergroupName,
+            @RequestParam String username
+    ) {
+        this.usergroupManager.addUsergroupMember(
+                this.clientService.findById(client),
+                usergroupName,
+                username,
+                true
+        );
+    }
+
+    @GetMapping("/{client}/{usergroupName}")
+    public Usergroup getUsergroup(
+            @PathVariable String client,
+            @PathVariable String usergroupName
+    ) {
+        return this.usergroupManager.getUsergroup(
+                this.clientService.findById(client),
+                usergroupName,
+                true
+        );
+    }
+
+    @GetMapping("/{client}")
+    public List<Usergroup> getUsergroups(@PathVariable String client) {
+        return this.usergroupManager.getUsergroups(this.clientService.findById(client));
+    }
+
+    @GetMapping("/{client}/{usergroupName}")
+    public List<User> getUsergroupMembers(
+            @PathVariable String client,
+            @PathVariable String usergroupName
+    ) {
+        return this.usergroupManager.getUsergroupMembers(
+                this.clientService.findById(client),
+                usergroupName,
+                true
+        );
+    }
+
+    @DeleteMapping("/{client}/{usergroupName}")
+    public void deleteUsergroup(
+            @PathVariable String client,
+            @PathVariable String usergroupName
+    ) {
+        this.usergroupManager.deleteUsergroup(
+                this.clientService.findById(client),
+                usergroupName,
+                true
+        );
+    }
+
+    @DeleteMapping("/{client}/{usergroupName}")
+    public void deleteUsergroup(
+            @PathVariable String client,
+            @PathVariable String usergroupName,
+            @RequestParam String username
+    ) {
+        this.usergroupManager.removeUsergroupMember(
+                this.clientService.findById(client),
+                usergroupName,
+                username,
                 true
         );
     }

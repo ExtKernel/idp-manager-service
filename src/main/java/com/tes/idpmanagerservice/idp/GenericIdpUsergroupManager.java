@@ -1,10 +1,11 @@
 package com.tes.idpmanagerservice.idp;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.tes.idpmanagerservice.exception.*;
 import com.tes.idpmanagerservice.model.Client;
 import com.tes.idpmanagerservice.model.User;
 import com.tes.idpmanagerservice.model.Usergroup;
-import com.tes.idpmanagerservice.service.ClientService;
+//import com.tes.idpmanagerservice.service.ClientService;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +16,8 @@ import java.util.List;
 @Slf4j
 public abstract class GenericIdpUsergroupManager<T extends Client> implements IdpUsergroupManager<T> {
 
-    @Getter(AccessLevel.PROTECTED)
-    private final ClientService<T> clientService;
+//    @Getter(AccessLevel.PROTECTED)
+//    private final ClientService<T> clientService;
 
     @Getter(AccessLevel.PROTECTED)
     private final IdpJsonObjectMapper jsonObjectMapper;
@@ -34,14 +35,14 @@ public abstract class GenericIdpUsergroupManager<T extends Client> implements Id
     private final UsergroupIdpRequestSenderResultBlackListFilter<T> blackListFilter;
 
     public GenericIdpUsergroupManager(
-            ClientService<T> clientService,
+//            ClientService<T> clientService,
             IdpJsonObjectMapper jsonObjectMapper,
             IdpUsergroupRequestSender<T> requestSender,
             IdpModelExistenceValidator<T> modelExistenceValidator,
             IdpUserManager<T> userManager,
             UsergroupIdpRequestSenderResultBlackListFilter<T> blackListFilter
     ) {
-        this.clientService = clientService;
+//        this.clientService = clientService;
         this.jsonObjectMapper = jsonObjectMapper;
         this.requestSender = requestSender;
         this.modelExistenceValidator = modelExistenceValidator;
@@ -73,7 +74,7 @@ public abstract class GenericIdpUsergroupManager<T extends Client> implements Id
         // if not cleared,
         // ModelExistenceValidator and other classes
         // that depend on the output of getUsergroups are likely to break
-        clientService.clearClientUsergroupsCache(client);
+//        clientService.clearClientUsergroupsCache(client);
 
         return createdUsergroup;
     }
@@ -137,7 +138,7 @@ public abstract class GenericIdpUsergroupManager<T extends Client> implements Id
         // if not cleared,
         // ModelExistenceValidator and other classes
         // that depend on the output of getUsergroups are likely to break
-        clientService.clearClientUsergroupsCache(client);
+//        clientService.clearClientUsergroupsCache(client);
     }
 
     /**
@@ -253,7 +254,7 @@ public abstract class GenericIdpUsergroupManager<T extends Client> implements Id
         // if not cleared,
         // ModelExistenceValidator and other classes
         // that depend on the output of getUsergroups are likely to break
-        clientService.clearClientUsergroupsCache(client);
+//        clientService.clearClientUsergroupsCache(client);
     }
 
     /**
@@ -301,7 +302,7 @@ public abstract class GenericIdpUsergroupManager<T extends Client> implements Id
         // if not cleared,
         // ModelExistenceValidator and other classes
         // that depend on the output of getUsergroups are likely to break
-        clientService.clearClientUsergroupsCache(client);
+//        clientService.clearClientUsergroupsCache(client);
     }
 
     public void validateUsergroupExists(

@@ -23,7 +23,7 @@ public class GenericClientService<ClientType extends Client> implements ClientSe
             ClientServiceFactory clientServiceFactory
     ) {
         this.tokenManager = tokenManager;
-        this.clientServiceClient = clientServiceFactory.buildClientService();
+        this.clientServiceClient = clientServiceFactory.buildService();
     }
 
     @Override

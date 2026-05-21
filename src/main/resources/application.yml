@@ -2,4 +2,8 @@ spring:
     application:
         name: idp-manager-service
 
+clientServiceIp: ${CLIENT_SERVICE_IP}
+clientServicePort: ${CLIENT_SERVICE_PORT}
+clientServicePrincipalUsername: ${CLIENT_SERVICE_PRINCIPAL_USERNAME}
+clientServicePrincipalPassword: ${CLIENT_SERVICE_PRINCIPAL_PASSWORD}
 clientServiceTokenEndpointUrl: ${CLIENT_SERVICE_TOKEN_ENDPOINT_URL}

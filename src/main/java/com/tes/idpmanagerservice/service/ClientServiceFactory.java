@@ -9,19 +9,19 @@ public class ClientServiceFactory {
 //    @Value("clientServiceFdqn")
 //    private String fdqn;
 
-    @Value("clientServiceIp")
+    @Value("${clientServiceIp}")
     private String ip;
 
-    @Value("clientServicePort")
+    @Value("${clientServicePort}")
     private String port;
 
-    @Value("clientServicePrincipalUsername")
+    @Value("${clientServicePrincipalUsername}")
     private String principalUsername;
 
-    @Value("clientServicePrincipalPassword")
+    @Value("${clientServicePrincipalPassword}")
     private String principalPassword;
 
-    public KcClient buildClientService() {
+    public KcClient buildService() {
         KcClient client = new KcClient("client-service");
 //        client.setFqdn(fdqn);
         client.setIp(ip);
